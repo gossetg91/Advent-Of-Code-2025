@@ -24,11 +24,11 @@ fn main(){
         if values.len() == 0{ continue; }
 
         let seq_length = 2;
-        let mut current_mul = 10;
+        let mut current_mul : i64 = 10;
         let mut current_start = 0;
         for i in 1..=seq_length {
             let (max, max_idx) = get_min(current_start, values.len()-(seq_length-i), &values);
-            sum += (max*current_mul) as i64;
+            sum += (max as i64*current_mul) as i64;
             current_start = max_idx+1;
             current_mul /= 10;
         }
