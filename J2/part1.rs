@@ -33,8 +33,6 @@ fn main() {
         let mut end : String = bounds[1].trim().to_string();
         if begin.len() == end.len() && begin.len() % 2 != 0 { continue; }
 
-        println!("{} - {}", begin, end);
-
         if begin.len() % 2 != 0 {
             let begin_val = i64::from_str(&begin).unwrap();
             begin = get_bound_above(begin_val).to_string();
@@ -44,8 +42,6 @@ fn main() {
             let end_val = i64::from_str(&end).unwrap();
             end = get_bound_below(end_val).to_string();
         }
-
-        println!("{} - {}", begin, end);
 
         let b_header_size = begin.len()/2;
         let mut begin_header = i64::from_str(&begin[..b_header_size]).unwrap();
