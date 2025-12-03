@@ -1,7 +1,7 @@
 use std::fs::read_to_string;
 use std::str::FromStr;
 
-fn get_min(lower_bound : usize, upper_bound : usize, values : &Vec<i8>) -> (i8,usize){
+fn get_max(lower_bound : usize, upper_bound : usize, values : &Vec<i8>) -> (i64,usize){
     let mut max = values[lower_bound];
     let mut max_idx = lower_bound;
     for i in (lower_bound + 1)..upper_bound{
@@ -12,7 +12,7 @@ fn get_min(lower_bound : usize, upper_bound : usize, values : &Vec<i8>) -> (i8,u
             if current == 9 { break; }
         }
     }
-    return (max, max_idx)
+    return (max as i64, max_idx)
 }
 
 fn main(){
@@ -27,8 +27,8 @@ fn main(){
         let mut current_mul : i64 = 10;
         let mut current_start = 0;
         for i in 1..=seq_length {
-            let (max, max_idx) = get_min(current_start, values.len()-(seq_length-i), &values);
-            sum += (max as i64*current_mul) as i64;
+            let (max, max_idx) = get_max(current_start, values.len()-(seq_length-i), &values);
+            sum += max * current_mul;
             current_start = max_idx+1;
             current_mul /= 10;
         }
