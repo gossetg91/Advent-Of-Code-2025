@@ -16,21 +16,20 @@ fn main() {
             let str_len = value.len();
 
             for span in (1..=str_len/2).rev() {
-                if (str_len % span) == 0 {
-                    let pattern = &value[0..span];
+                if (str_len % span) != 0 { continue; }
+                let pattern = &value[0..span];
 
-                    let mut valid = true;
-                    for current_begin in (span..str_len).step_by(span){
-                        let to_check = &value[current_begin..current_begin+span];
-                        if to_check != pattern {
-                            valid = false;
-                            break;
-                        }
-                    }
-                    if valid {
-                        incorrect_sum += current_val;
+                let mut valid = true;
+                for current_begin in (span..str_len).step_by(span){
+                    let to_check = &value[current_begin..current_begin+span];
+                    if to_check != pattern {
+                        valid = false;
                         break;
                     }
+                }
+                if valid {
+                    incorrect_sum += current_val;
+                    break;
                 }
             }
         }
