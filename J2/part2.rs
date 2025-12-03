@@ -8,8 +8,8 @@ fn main() {
     for current in input_data.split(',') {
         let bounds = current.split('-').collect::<Vec<_>>();
 
-        let begin = i128::from_str(bounds[0].trim()).unwrap();
-        let end = i128::from_str(bounds[1].trim()).unwrap();
+        let begin = i64::from_str(bounds[0].trim()).unwrap();
+        let end = i64::from_str(bounds[1].trim()).unwrap();
 
         for current_val in begin..=end {
             let value = current_val.to_string();
