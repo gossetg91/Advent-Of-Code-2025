@@ -43,6 +43,8 @@ fn main() {
             end = get_bound_below(end_val).to_string();
         }
 
+        if begin.len() < 2 || end.len() < 2 { continue; }
+
         let b_header_size = begin.len()/2;
         let mut begin_header = i64::from_str(&begin[..b_header_size]).unwrap();
         let begin_footer = i64::from_str(&begin[b_header_size..]).unwrap();
