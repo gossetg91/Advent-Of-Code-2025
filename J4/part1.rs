@@ -3,10 +3,11 @@ use std::fs::read_to_string;
 fn main() {
     let move_x = [-1,-1,-1, 0, 0, 1, 1, 1];
     let move_y = [-1, 0, 1,-1, 1,-1, 0, 1];
-    let mut map : Vec<char> = Vec::new();
-    let cols;
-    let mut rows :i32 = 0;
 
+    let mut rows :i32 = 0;
+    let cols;
+
+    let mut map : Vec<char> = Vec::new();
     for current in read_to_string("./inputs/input.txt").unwrap().split("\n") {
         if current.len() == 0 {continue;}
         rows += 1;
