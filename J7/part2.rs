@@ -23,6 +23,7 @@ fn dfs_step(depth : usize, max_depth : usize, prob_len: usize, beam_pos: usize, 
             if current_idx < prob_len{
                 path_count += dfs_step(depth + 1, indexing.len(), prob_len, current_idx+1, indexing, data, mem);
             }
+            break;
         }
     }
     if no_hit{
