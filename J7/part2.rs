@@ -3,7 +3,7 @@ use std::collections::BTreeMap;
 
 
 fn dfs_step(depth : usize, max_depth : usize, prob_len: usize, beam_pos: usize, indexing : &Vec<usize>, data: &Vec<usize>, mem: &mut BTreeMap<usize, BTreeMap<usize, i64>>) -> i64 {
-    if !mem.contains_key(&depth){
+    if !mem.contains_key(&depth) {
         mem.insert(depth, BTreeMap::new());
     } else if mem[&depth].contains_key(&beam_pos) {
         return mem[&depth][&beam_pos];
@@ -13,7 +13,7 @@ fn dfs_step(depth : usize, max_depth : usize, prob_len: usize, beam_pos: usize, 
 
     let mut no_hit = true;
     let mut path_count = 0;
-    for i in indexing[depth-1]..indexing[depth]{
+    for i in indexing[depth-1]..indexing[depth] {
         let current_idx = data[i];
         if beam_pos == current_idx {
             no_hit = false;
@@ -26,7 +26,8 @@ fn dfs_step(depth : usize, max_depth : usize, prob_len: usize, beam_pos: usize, 
             break;
         }
     }
-    if no_hit{
+
+    if no_hit {
         path_count += dfs_step(depth + 1, indexing.len(), prob_len, beam_pos, indexing, data, mem);
     }
 
